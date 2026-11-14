@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art et Résistance</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-section {
+            display: none;
+            flex: 1;
+            width: 100%;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 5%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* La section active s'affiche */
+        .page-section.active-page {
+            display: flex;
+        }
+
+        /* Voile coloré de fond identique au précédent */
+        .page-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                rgba(38, 38, 25, 0.78),
+                rgba(182, 195, 14, 0.18)
+            );
+            z-index: 1;
+        }
+
+        .page-section > * {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="#" onclick="changerPage('accueil')">ART ET<br>RESISTANCE</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="changerPage('accueil')" id="nav-accueil" class="active">ACCUEIL</a></li>
+                <li><a href="#" onclick="changerPage('explorer')" id="nav-explorer">EXPLORER</a></li>
+                <li><a href="#" onclick="changerPage('expo')" id="nav-expo">EXPO TEMPORAIRE</a></li>
+                <li><a href="#" onclick="changerPage('apropos')" id="nav-apropos">A PROPOS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PAGE 1 : ACCUEIL -->
+    <section id="accueil" class="page-section active-page bg-accueil">
+        <p class="hero-texte">
+            Découvrez l’art engagé, où chaque œuvre donne une<br>
+            voix au peuple et témoigne de ses luttes.
+        </p>
+    </section>
+
+    <!-- PAGE 2 : EXPLORER -->
+    <section id="explorer" class="page-section bg-galerie">
+        <div class="grille-pays">
+            <article class="carte-pays">
+                <h2>FRANCE</h2>
+                <img src="images/meissonier-barricade.jpg" alt="Œuvre engagée France">
+            </article>
+            <article class="carte-pays">
+                <h2>POLOGNE</h2>
+                <img src="images/agata.webp" alt="Œuvre engagée Pologne">
+            </article>
+            <article class="carte-pays">
+                <h2>UKRAINE</h2>
+                <img src="images/ukraine will not forgive natalia savchenko.jpg" alt="Œuvre engagée Ukraine">
+            </article>
+        </div>
+    </section>
+
+    <!-- PAGE 3 : EXPO TEMPORAIRE -->
+    <section id="expo" class="page-section bg-galerie">
+        <h1 class="titre-expo">
+            EXPOSITION TEMPORAIRE<br>
+            L'ART ANTILLAIS FRANCAIS
+        </h1>
+        <div class="grille-expo">
+            <img src="images/1.jpg" alt="Œuvre 1">
+            <img src="images/2.webp" alt="Œuvre 2">
+            <img src="images/3.jpg" alt="Œuvre 3">
+            <img src="images/4.webp" alt="Œuvre 4">
+            <img src="images/5.jpg" alt="Œuvre 5">
+            <img src="images/6.jpg" alt="Œuvre 6">
+            <img src="images/7.jpg" alt="Œuvre 7">
+            <img src="images/8.webp" alt="Œuvre 8">
+        </div>
+    </section>
+
+    <!-- PAGE 4 : A PROPOS -->
+    <section id="apropos" class="page-section bg-galerie">
+        <div class="conteneur-apropos">
+            <div class="infos-pratiques">
+                <p>INFORMATIONS PRATIQUES :</p>
+                <p>ADRESSE : 154 boulevard Voltaire, Paris 75011</p>
+                <p>TEL : +33 4 69 65 49 27</p>
+                <p>MAIL : artetresistance@gmail.com</p>
+                <p>HORRAIRES : MARDI-SAMEDI 10h-17h</p>
+                <p>RESEAUX SOCIAUX : @artetresistance</p>
+            </div>
+            <div class="presentation-galerie">
+                <p>Fondée en 2022, Art et Résistance est une galerie engagée qui explore les liens entre l'art, la politique et les luttes populaires...</p>
+                <p>Notre galerie propose une exposition permanente, ainsi que des expositions temporaires...</p>
+                <p>Art et Résistance est un lieu de découverte et de réflexion...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Petit script JavaScript pour changer de page sans recharger -->
+    <script>
+        function changerPage(pageId) {
+            // Cache toutes les sections
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.remove('active-page');
+            });
+            // Retire la classe active de tous les liens du menu
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Affiche la section choisie
+            document.getElementById(pageId).classList.add('active-page');
+            // Met en surbrillance le lien cliqué
+            document.getElementById('nav-' + pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

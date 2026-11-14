@@ -1,0 +1,245 @@
+/* Importation de la police Alfa Slab One depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+:root {
+    /* Mélange 80% #E4F411 et 20% #000000 */
+    --couleur-texte: #B6C30E;
+    /* Mélange 80% #262619 et 20% #AAC976 */
+    --couleur-header: #40472C;
+    /* Voile de transparence sur les images de fond */
+    --filtre-fond: rgba(45, 50, 20, 0.72);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Alfa Slab One', cursive, sans-serif;
+    color: var(--couleur-texte);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #1f2214;
+}
+
+/* --- BARRE DE NAVIGATION (COMMUNE AUX 4 PAGES) --- */
+header {
+    background-color: var(--couleur-header);
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 1.7rem;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo a {
+    color: var(--couleur-texte);
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 55px;
+}
+
+nav a {
+    color: var(--couleur-texte);
+    text-decoration: none;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+nav a:hover,
+nav a.active {
+    opacity: 0.75;
+    transform: translateY(-2px);
+}
+
+/* --- CONTENEUR PRINCIPAL & ARRIÈRE-PLANS --- */
+main {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 5%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Voile coloré par-dessus la photo de fond */
+main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(38, 38, 25, 0.78),
+        rgba(182, 195, 14, 0.18)
+    );
+    z-index: 1;
+}
+
+/* Assure que le contenu passe au-dessus du filtre de fond */
+main > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Image de fond spécifique à l'accueil */
+.bg-accueil {
+    background-image: url('images/fond\ écran1.png');
+}
+
+/* Image de fond commune aux 3 autres pages */
+.bg-galerie {
+    background-image: url('images/fond\ écran1.png');
+}
+
+/* --- PAGE 1 : ACCUEIL --- */
+.hero-texte {
+    max-width: 820px;
+    text-align: center;
+    font-size: 1.45rem;
+    line-height: 1.5;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    margin-top: 60px;
+}
+
+/* --- PAGE 2 : EXPLORER (3 PAYS) --- */
+.grille-pays {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.carte-pays {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carte-pays h2 {
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carte-pays img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.carte-pays img:hover {
+    transform: scale(1.02);
+    z-index: 3;
+}
+
+/* --- PAGE 3 : EXPO TEMPORAIRE (ART ANTILLAIS) --- */
+.titre-expo {
+    text-align: center;
+    font-size: 1.15rem;
+    line-height: 1.4;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.grille-expo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 18px;
+    column-gap: 0;
+    width: 100%;
+    max-width: 960px;
+}
+
+.grille-expo img {
+    width: 100%;
+    height: 215px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.grille-expo img:hover {
+    transform: scale(1.04);
+    z-index: 3;
+}
+
+/* --- PAGE 4 : À PROPOS --- */
+.conteneur-apropos {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 70px;
+    width: 100%;
+    max-width: 1150px;
+    align-items: center;
+}
+
+.infos-pratiques {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-size: 1.02rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.presentation-galerie {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    font-size: 1rem;
+    line-height: 1.48;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* --- RESPONSIVE (MOBILE & TABLETTE) --- */
+@media (max-width: 900px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .grille-pays {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .grille-expo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .conteneur-apropos {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
